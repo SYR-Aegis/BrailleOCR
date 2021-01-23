@@ -13,11 +13,17 @@ if(resp.status_code==200): #정상 처리
     for i in body:
         contents += i.get_text()
 
-    new_contents = re.findall('[가-힣\n ]', contents)  #순수 한글,줄바꿈,띄어쓰기만 뽑아냄 #각 문자가 리스트에 저장
 
-    #반드시 줄바꿈으로 시작
-    if(new_contents[0] != '\n'):
-        new_contents[0] = '\n'
+    if not new_contents[0].isalpha():
+        new_contents[0] = ''
+
+    #한 문장 끝나면 줄바꿈
+    for i in range(len(new_contents)):
+        if(new_contents[i] == '.'):
+            if(new_contents[i+1] !='\n'):
+                new_contents[i + 1] == '\n'
+
+    new_contents = re.findall('[가-힣\n ]', contents)  #순수 한글,줄바꿈,띄어쓰기만 뽑아냄 #각 문자가 리스트에 저장
 
     #\n가 한번 나오고 다시 한글 나올때까지 모든 특수 문자 제거
     for i in range(len(new_contents)):
@@ -40,6 +46,8 @@ if(resp.status_code==200): #정상 처리
             new_contents[i]=''
         if(new_contents[i].isalpha()):
             break
+
+    new_contents[len(new_contents)].append('\n')
 
 
     #텍스트 파일에 저장

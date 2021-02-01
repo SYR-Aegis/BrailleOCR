@@ -20,23 +20,26 @@ def draw_image(textlist, TLGAN_save_path, CRNN_save_path):
 
     for text, i in zip(textlist, range(len(textlist))):
 
-        img = np.zeros((60, 256, 3), dtype=np.uint8)
-        img_pil = Image.fromarray(img)
-        draw = ImageDraw.Draw(img_pil)
-        draw.text((30, 20), text, font=font, fill=(b, g, r))
+        if len(text) <= 10:
+            img = np.zeros((60, 256, 3), dtype=np.uint8)
+            img_pil = Image.fromarray(img)
+            draw = ImageDraw.Draw(img_pil)
+            draw.text((30, 20), text, font=font, fill=(b, g, r))
 
-        #draw CRNN image
-        cv2.imwrite(os.path.join(CRNN_save_path, str(len(os.listdir(CRNN_save_path))) + ".jpg"), np.array(img_pil))
-        crnn_dataframe.update({str(len(os.listdir(CRNN_save_path))) + ".jpg": text})
+            #draw CRNN image
+            cv2.imwrite(os.path.join(CRNN_save_path, str(len(os.listdir(CRNN_save_path))) + ".jpg"), np.array(img_pil))
+            crnn_dataframe.update({str(len(os.listdir(CRNN_save_path))) + ".jpg": text})
 
-        full_img = np.concatenate([full_img, img_pil], axis=0)
+            full_img = np.concatenate([full_img, img_pil], axis=0)
 
-        xmin = 30
-        xmax = xmin + 20*len(text)
-        ymin = 20 + 60*i
-        ymax = ymin+20
+            xmin = 30
+            xmax = xmin + 20*len(text)
+            ymin = 20 + 60*i
+            ymax = ymin+20
 
-        bounding_boxes.append([xmin, xmax, ymin, ymax])
+            bounding_boxes.append([xmin, xmax, ymin, ymax])
+        else:
+            full_img = np.concatenate([full_img, np.zeros((60, 256, 3))], axis=0)
 
 
     # make sure that the images are in the same size

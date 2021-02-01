@@ -57,7 +57,8 @@ def writeCSV(TLGAN_dataframe, CRNN_dataframe, TLGAN_csv_filename="TLGAN.csv", CR
         for filename in TLGAN_dataframe.keys():
             f.write(filename)
             for bb in TLGAN_dataframe[filename]:
-                f.write(","+str(bb))
+                for axis in bb:
+                    f.write(","+str(axis))
             f.write("\n")
 
     with open(CRNN_csv_filename, 'w', encoding="utf-8") as f:

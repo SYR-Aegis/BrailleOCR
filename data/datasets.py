@@ -3,6 +3,7 @@ import numpy as np
 from PIL import Image
 import os
 from torch.utils.data.dataset import Dataset
+import json
 
 
 class TLGAN_Dataset(Dataset):
@@ -21,18 +22,26 @@ class TLGAN_Dataset(Dataset):
 
 
 class CRNN_Dataset(Dataset):
-    def __init__(self, path_to_csv="./CRNN.csv"):
+    def __init__(self, path_to_csv = "./CRNN.csv", dict_dir="dict_file.txt", root = './imgaes/', ):
         self.img_file=[]
+        self.label = []
+        self.root = root
 
-        with open(path_to_csv, "r") as f:
+        with open(path_to_csv, "r",encoding = "utf-8") as f:
             for line in f.readlines():
                 self.img_file.append(line.strip().split(','))
+
+        with open(dict_dir, "r",encoding = "utf-8") as fil:
+            dict = fil.read()
+
+        self.label_dict = json.loads(dict)
 
     def __len__(self):
         return len(self.img_file)
 
     def __getitem__(self, idx):
-        image = np.array(Image.open('./imgaes/',self.img_file[idx][0]))
-        label = self.img_file[idx][1:]
+        image = np.array(Image.open(os.path.join(self.root,self.img_file[idx][0])))
+        for key in self.img_file[idx][1:]:
+            self.label.append(self.label_dict[key])
 
-        return image,label
+        return image, self.label

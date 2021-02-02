@@ -4,6 +4,7 @@ import os
 import torch
 
 from torch.utils.data.dataset import Dataset
+import matplotlib.pyplot as plt
 
 
 class TLGAN_Dataset(Dataset):
@@ -16,15 +17,15 @@ class TLGAN_Dataset(Dataset):
 
             for line in lines:
                 line = line.split(',')
-                img = cv2.imread(os.path.join(path_to_img, line[0])).astype(np.float32)
-                GT = cv2.imread(os.path.join(path_to_GT, line[0])).astype(np.float32)
+                img = cv2.imread(os.path.join(path_to_img, line[0]))
+                GT = cv2.imread(os.path.join(path_to_GT, line[0]))
 
                 imgs.append(img)
                 GTs.append(GT)
 
 
-        imgs = np.array(imgs).astype(np.float32)
-        GTs = np.array(GTs).astype(np.float32)
+        imgs = np.array(imgs).astype(np.int32)
+        GTs = np.array(GTs).astype(np.int32)
 
         self.imgs = imgs
         self.GTs = GTs
@@ -33,8 +34,8 @@ class TLGAN_Dataset(Dataset):
         return len(self.imgs)
 
     def __getitem__(self, idx):
-        img = torch.tensor(self.imgs[idx])
-        gt = torch.tensor(self.GTs[idx])
+        img = torch.tensor(self.imgs[idx]/np.max(self.imgs[idx]), dtype=torch.float32)
+        gt = torch.tensor(self.GTs[idx]/np.max(self.GTs[idx]), dtype=torch.float32)
 
         return img, gt
 

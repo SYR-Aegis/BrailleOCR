@@ -28,7 +28,7 @@ def draw_image(textlist, TLGAN_save_path, CRNN_save_path):
 
             #draw CRNN image
             cv2.imwrite(os.path.join(CRNN_save_path, str(len(os.listdir(CRNN_save_path))) + ".jpg"), np.array(img_pil))
-            crnn_dataframe.update({str(len(os.listdir(CRNN_save_path))) + ".jpg": text})
+            crnn_dataframe.update({str(len(os.listdir(CRNN_save_path))-1) + ".jpg": text})
 
             full_img = np.concatenate([full_img, img_pil], axis=0)
 
@@ -48,7 +48,7 @@ def draw_image(textlist, TLGAN_save_path, CRNN_save_path):
 
     cv2.imwrite(os.path.join(TLGAN_save_path, str(len(os.listdir(TLGAN_save_path))) + ".jpg"), full_img)
 
-    return {str(len(os.listdir(TLGAN_save_path))) + ".jpg": bounding_boxes}, crnn_dataframe
+    return {str(len(os.listdir(TLGAN_save_path))-1) + ".jpg": bounding_boxes}, crnn_dataframe
 
 
 def writeCSV(TLGAN_dataframe, CRNN_dataframe, TLGAN_csv_filename="TLGAN.csv", CRNN_csv_filename="CRNN.csv"):

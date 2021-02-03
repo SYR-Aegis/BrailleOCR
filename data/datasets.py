@@ -4,6 +4,7 @@ from PIL import Image
 import os
 from torch.utils.data.dataset import Dataset
 import json
+import torch
 
 
 class TLGAN_Dataset(Dataset):
@@ -22,7 +23,7 @@ class TLGAN_Dataset(Dataset):
 
 
 class CRNN_Dataset(Dataset):
-    def __init__(self, path_to_csv = "./CRNN.csv", dict_dir="dict_file.txt", root = './imgaes/', ):
+    def __init__(self, path_to_csv = "./CRNN.csv", dict_dir="dict_file.txt", root = './images/CRNN', ):
         self.img_file=[]
         self.label = []
         self.root = root
@@ -40,7 +41,9 @@ class CRNN_Dataset(Dataset):
         return len(self.img_file)
 
     def __getitem__(self, idx):
-        image = np.array(Image.open(os.path.join(self.root,self.img_file[idx][0])))
+        image = np.array(Image.open(os.path.join(self.root,self.img_file[idx][0]))).astype(np.int32)
+        image = torch.tensor(image/np.max(image),dtype=torch.float32)
+
         for key in self.img_file[idx][1:]:
             self.label.append(self.label_dict[key])
 

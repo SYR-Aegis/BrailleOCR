@@ -4,7 +4,14 @@ import os
 import torch
 
 from torch.utils.data.dataset import Dataset
-import matplotlib.pyplot as plt
+
+
+def channel_first(image):
+    return np.moveaxis(image, 2, 0)
+
+
+def channel_last(image):
+    return np.moveaxis(image, 0, 2)
 
 
 class TLGAN_Dataset(Dataset):
@@ -18,6 +25,7 @@ class TLGAN_Dataset(Dataset):
             for line in lines:
                 line = line.split(',')
                 img = cv2.imread(os.path.join(path_to_img, line[0]))
+                img = channel_first(img)
                 GT = cv2.imread(os.path.join(path_to_GT, line[0]))
 
                 imgs.append(img)
@@ -34,8 +42,8 @@ class TLGAN_Dataset(Dataset):
         return len(self.imgs)
 
     def __getitem__(self, idx):
-        img = torch.tensor(self.imgs[idx]/np.max(self.imgs[idx]), dtype=torch.float32)
-        gt = torch.tensor(self.GTs[idx]/np.max(self.GTs[idx]), dtype=torch.float32)
+        img = torch.tensor(self.imgs[idx]/255, dtype=torch.float32)
+        gt = torch.tensor(self.GTs[idx]/255, dtype=torch.float32)
 
         return img, gt
 

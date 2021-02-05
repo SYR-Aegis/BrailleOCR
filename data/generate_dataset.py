@@ -76,35 +76,78 @@ if __name__ == '__main__':
     parser.add_argument("--TLGAN_save_path", type=str, default="./images/TLGAN")
     parser.add_argument("--CRNN_save_path", type=str, default="./images/CRNN")
     parser.add_argument("--n_text", type=int, default=4)
+    parser.add_argument("--simple", type=bool, default=True)
 
     args = parser.parse_args()
     n_text = args.n_text
 
     tlgan_csv = {}
     crnn_csv = {}
+    is_simple = args.simple
 
-    with open(os.path.join(args.text_file_path, args.text_file_name), 'r', encoding="utf-8") as textFile:
-        lines = textFile.read().split("\n")
+    if is_simple:
+        cnt = 0
+        with open(os.path.join(args.text_file_path, args.text_file_name), 'r', encoding="utf-8") as textFile:
+            lines = textFile.read().split("\n")
 
-        b, g, r = 255, 255, 255
-        fontpath = "fonts/H2GTRM.TTF"
-        font = ImageFont.truetype(fontpath, 20)
+            b, g, r = 255, 255, 255
+            fontpath = "fonts/H2GTRM.TTF"
+            font = ImageFont.truetype(fontpath, 20)
 
-        if len(lines) <= n_text:
-            tlgan, crnn = draw_image(lines, args.TLGAN_save_path, args.CRNN_save_path)
-            tlgan_csv.update(tlgan)
-            crnn_csv.update(crnn)
+            if len(lines) <= n_text:
+                tlgan, crnn = draw_image(lines, args.TLGAN_save_path, args.CRNN_save_path)
+                tlgan_csv.update(tlgan)
+                crnn_csv.update(crnn)
 
-        else:
-            for i in range(0, len(lines), n_text):
+            else:
+                if len(lines) <= 2000:
+                    for i in range(0, len(lines), n_text):
 
-                if i+n_text >= len(lines):
-                    tlgan, crnn = draw_image(lines[i:], args.TLGAN_save_path, args.CRNN_save_path)
-                    tlgan_csv.update(tlgan)
-                    crnn_csv.update(crnn)
-
+                        if i + n_text >= len(lines):
+                            tlgan, crnn = draw_image(lines[i:], args.TLGAN_save_path, args.CRNN_save_path)
+                            tlgan_csv.update(tlgan)
+                            crnn_csv.update(crnn)
+                        else:
+                            tlgan, crnn = draw_image(lines[i:i + n_text], args.TLGAN_save_path, args.CRNN_save_path)
+                            tlgan_csv.update(tlgan)
+                            crnn_csv.update(crnn)
                 else:
-                    tlgan, crnn = draw_image(lines[i:i+n_text], args.TLGAN_save_path, args.CRNN_save_path)
-                    tlgan_csv.update(tlgan)
-                    crnn_csv.update(crnn)
-    writeCSV(tlgan_csv, crnn_csv)
+                    for i in range(0, 2000, n_text):
+
+                        if i + n_text >= 2000:
+                            tlgan, crnn = draw_image(lines[i:], args.TLGAN_save_path, args.CRNN_save_path)
+                            tlgan_csv.update(tlgan)
+                            crnn_csv.update(crnn)
+                        else:
+                            tlgan, crnn = draw_image(lines[i:i + n_text], args.TLGAN_save_path, args.CRNN_save_path)
+                            tlgan_csv.update(tlgan)
+                            crnn_csv.update(crnn)
+
+        writeCSV(tlgan_csv, crnn_csv)
+
+    else:
+        with open(os.path.join(args.text_file_path, args.text_file_name), 'r', encoding="utf-8") as textFile:
+            lines = textFile.read().split("\n")
+
+            b, g, r = 255, 255, 255
+            fontpath = "fonts/H2GTRM.TTF"
+            font = ImageFont.truetype(fontpath, 20)
+
+            if len(lines) <= n_text:
+                tlgan, crnn = draw_image(lines, args.TLGAN_save_path, args.CRNN_save_path)
+                tlgan_csv.update(tlgan)
+                crnn_csv.update(crnn)
+
+            else:
+                for i in range(0, len(lines), n_text):
+
+                    if i+n_text >= len(lines):
+                        tlgan, crnn = draw_image(lines[i:], args.TLGAN_save_path, args.CRNN_save_path)
+                        tlgan_csv.update(tlgan)
+                        crnn_csv.update(crnn)
+
+                    else:
+                        tlgan, crnn = draw_image(lines[i:i+n_text], args.TLGAN_save_path, args.CRNN_save_path)
+                        tlgan_csv.update(tlgan)
+                        crnn_csv.update(crnn)
+        writeCSV(tlgan_csv, crnn_csv)

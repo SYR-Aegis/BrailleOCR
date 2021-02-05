@@ -1,6 +1,6 @@
 f = open('SYR_crawling.txt', 'r',encoding='utf-8')
-new_f = open('new_crawling.txt','w',encoding='utf-8')
-
+new_f = open('new_crawling.txt','w',encoding='utf-8'
+)
 # 텍스트 단어별 분리
 text = f.read()
 text = text.replace(' ','\n')

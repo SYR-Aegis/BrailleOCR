@@ -16,7 +16,7 @@ for char in text:
         if(char!= '\n'):
             data_dict[char] = len(data_dict)
 
-data_f = open('dict_file.txt','w')
+data_f = open('dict_file.txt','w',encoding='utf-8')
 data_f.write(str(data_dict).replace('\'','\"'))
 
 

@@ -1,5 +1,5 @@
 f = open('crawling.txt', 'r',encoding='utf-8')
-new_f = open('new_crawling.txt','w',encoding='utf-8')
+new_f = open('new_crawling_for_datasets.txt','w',encoding='utf-8')
 
 # 텍스트 단어별 분리
 text = f.read()
@@ -16,7 +16,7 @@ for char in text:
         if(char!= '\n'):
             data_dict[char] = len(data_dict)
 
-data_f = open('dict_file.txt','w',encoding='utf-8')
+data_f = open('dictionary_file.txt','w',encoding='utf-8')
 data_f.write(str(data_dict).replace('\'','\"'))
 
 

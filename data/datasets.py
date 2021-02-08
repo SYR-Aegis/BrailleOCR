@@ -30,7 +30,6 @@ class TLGAN_Dataset(Dataset):
                 img = channel_first(img)
 
                 GT = np.load(os.path.join(path_to_GT, line[0].split('.')[0]+".npy"))
-                # GT = cv2.imread(os.path.join(path_to_GT, line[0]))
                 GT = channel_first(GT)
 
                 imgs.append(img)

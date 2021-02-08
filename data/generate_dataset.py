@@ -80,8 +80,6 @@ def writeCSV(TLGAN_dataframe, CRNN_dataframe, TLGAN_csv_filename="TLGAN.csv", CR
 
 
 if __name__ == '__main__':
-    # new_crawling_for_datasets
-    # sample_text
     parser = argparse.ArgumentParser(description="Convert text to image file")
     parser.add_argument("--text_file_path", type=str, default="./")
     parser.add_argument("--text_file_name", type=str, default="new_crawling_for_datasets.txt")

@@ -19,21 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a095a9f5-74c8-463b-9683-bd66ff141394" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/data/Readme.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/crawler.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/crawling.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/datasets.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/dict_file.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/dictionary_file.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/fonts/H2GTRM.TTF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/generate_dataset.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/generate_gau_map.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/make_dict_file.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/new_crawling_for_datasets.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/sample_text.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/test.py" beforeDir="false" />
-    </list>
+    <list default="true" id="a095a9f5-74c8-463b-9683-bd66ff141394" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -115,22 +101,22 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="2151" height="333" key="GridCell.Tab.0.bottom" timestamp="1612756126740">
+    <state width="2151" height="333" key="GridCell.Tab.0.bottom" timestamp="1612756202171">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state width="2151" height="333" key="GridCell.Tab.0.bottom/0.0.2194.1194@0.0.2194.1194" timestamp="1612756126740" />
-    <state width="2151" height="333" key="GridCell.Tab.0.center" timestamp="1612756126739">
+    <state width="2151" height="333" key="GridCell.Tab.0.bottom/0.0.2194.1194@0.0.2194.1194" timestamp="1612756202171" />
+    <state width="2151" height="333" key="GridCell.Tab.0.center" timestamp="1612756202170">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state width="2151" height="333" key="GridCell.Tab.0.center/0.0.2194.1194@0.0.2194.1194" timestamp="1612756126739" />
-    <state width="2151" height="333" key="GridCell.Tab.0.left" timestamp="1612756126739">
+    <state width="2151" height="333" key="GridCell.Tab.0.center/0.0.2194.1194@0.0.2194.1194" timestamp="1612756202170" />
+    <state width="2151" height="333" key="GridCell.Tab.0.left" timestamp="1612756202170">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state width="2151" height="333" key="GridCell.Tab.0.left/0.0.2194.1194@0.0.2194.1194" timestamp="1612756126739" />
-    <state width="2151" height="333" key="GridCell.Tab.0.right" timestamp="1612756126739">
+    <state width="2151" height="333" key="GridCell.Tab.0.left/0.0.2194.1194@0.0.2194.1194" timestamp="1612756202170" />
+    <state width="2151" height="333" key="GridCell.Tab.0.right" timestamp="1612756202171">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state width="2151" height="333" key="GridCell.Tab.0.right/0.0.2194.1194@0.0.2194.1194" timestamp="1612756126739" />
+    <state width="2151" height="333" key="GridCell.Tab.0.right/0.0.2194.1194@0.0.2194.1194" timestamp="1612756202171" />
     <state x="607" y="355" width="923" height="478" key="MultipleFileMergeDialog" timestamp="1612616367975">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>

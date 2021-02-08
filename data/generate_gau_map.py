@@ -1,10 +1,9 @@
 import numpy as np
 import argparse
 import os
-import torch
 import csv
 import math
-import matplotlib.pyplot as plt
+import glob
 import cv2
 
 def gaussian_map(pos_1,pos_2,shape=(3,256,256),raw = np.zeros((1,256,256))):
@@ -45,6 +44,10 @@ if __name__ == '__main__':
     args = parser.parse_args()
     n_text = args.n_text
 
+    if os.path.exists(args.map_save_path):
+        for file in glob.glob(args.map_save_path+"/*"):
+            os.remove(file)
+
     with open(os.path.join(args.csv_file_path, args.csv_file_name), 'r',encoding='utf-8') as csv_file:
         reader = csv.reader(csv_file)
         for line in reader:
@@ -62,7 +65,8 @@ if __name__ == '__main__':
 
             if not os.path.exists(args.map_save_path):
                 os.mkdir(args.map_save_path)
-            cv2.imwrite(os.path.join(args.map_save_path,name), img*255)
+            np.save(os.path.join(args.map_save_path, name.split('.')[0]+".npy"), img*255)
+            # cv2.imwrite(os.path.join(args.map_save_path,name), img*255)
             # for un-regularized img
 
 

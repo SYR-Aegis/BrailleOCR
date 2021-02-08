@@ -3,9 +3,9 @@ import json
 
 from pathlib import Path
 
-import csv
+import numpy as np
+import cv2
 
-with open("TLGAN.csv", 'r') as f:
-    csvfile = csv.reader(f, delimiter=',')
-    for row in csvfile:
-        print(row)
+
+a = np.load("images/gaussian_map/0.npy")
+print(a.shape)

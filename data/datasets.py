@@ -28,12 +28,13 @@ class TLGAN_Dataset(Dataset):
                 line = line.split(',')
                 img = cv2.imread(os.path.join(path_to_img, line[0]))
                 img = channel_first(img)
-                GT = cv2.imread(os.path.join(path_to_GT, line[0]))
+
+                GT = np.load(os.path.join(path_to_GT, line[0].split('.')[0]+".npy"))
+                # GT = cv2.imread(os.path.join(path_to_GT, line[0]))
                 GT = channel_first(GT)
 
                 imgs.append(img)
                 GTs.append(GT)
-
 
         imgs = np.array(imgs).astype(np.int32)
         GTs = np.array(GTs).astype(np.int32)

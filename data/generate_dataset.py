@@ -42,10 +42,13 @@ def draw_image(textlist, TLGAN_save_path, CRNN_save_path):
         else:
             full_img = np.concatenate([full_img, np.zeros((60, 256, 3))], axis=0)
 
-
     # make sure that the images are in the same size
     if len(textlist) < args.n_text:
         full_img = np.concatenate([full_img, np.zeros((60*(args.n_text-len(textlist)), 256, 3),)], axis=0)
+
+    # check that images are 256X256
+    if full_img.shape[0] < 256:
+        full_img = np.concatenate([full_img, np.zeros(((256-full_img.shape[0]), 256, 3))], axis=0)
 
     cv2.imwrite(os.path.join(TLGAN_save_path, str(len(os.listdir(TLGAN_save_path))) + ".jpg"), full_img)
 

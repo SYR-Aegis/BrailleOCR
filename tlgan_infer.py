@@ -7,21 +7,39 @@ from torch.utils.data import DataLoader
 import cv2
 
 
-def infer_model(img,weight_path = "./tlgan_model/generator.pt"):
+def infer_model(img,weight_path = "./tlgan_model/generator.pt",img_col_size=60,img_row_size=256,left_margin=20):
+    # img shape 256,256,3
+    # image input for torch => channel first
+    x = np.transpose(img,(2,0,1))
+    x = torch.unsqueeze(x,dim=0)
     netG = Generator()
     netG.load_state_dict(torch.load(weight_path))
 
-    x = netG(img)
+    x = netG(x)
     x = x.detach().numpy()[0]
     x = x> 0.2        
     x= np.transpose(x,(1,2,0))
     # plt.imshow(x,cmap='gray')
     # plt.show()
 
-    
     axis = make_axis_cv(x)
-    print(axis)
-    return axis
+    result = []
+    for (min,max) in axis:
+        tmp = img[min[1]:max[1],min[0]:max[0],0]
+        # croppging
+        up_magin = (img_col_size - (max[1]-min[1]))//2
+        down_magin = img_col_size - (max[1] - min[1]) - up_magin
+        left_magin = left_margin
+        right_margin = img_row_size-left_magin-(max[0]-min[0])
+        # margin check
+        tmp = np.pad(tmp,((up_magin,down_magin),(left_magin,right_margin)),'constant', constant_values=0)
+        result.append(tmp)
+        # append pad img
+
+        # plt.imshow(result[-1],cmap='gray')
+        # plt.show()
+    print(result)
+    return result
 
 
 def make_axis(img):
@@ -96,5 +114,8 @@ batch_size=1)
 data = iter(data)
 img = next(data)
 img = next(data)[0]
+img = img[0]
+img= np.transpose(img,(1,2,0))
+print(img.shape)
 
 infer_model(img)

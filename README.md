@@ -17,8 +17,8 @@
 | pytorch       | 1.7.0    |
 | opencv-python | 4.4.0.44 |
 | numpy         | 1.18.5   |
-|               |          |
-|               |          |
+| bs4           | 4.9.3    |
+| requests      | 2.25.1   |
 
 ## TLGAN
 

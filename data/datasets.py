@@ -6,6 +6,7 @@ from PIL import Image
 import json
 
 from torch.utils.data.dataset import Dataset
+import torchvision.transforms as transforms
 
 
 def channel_first(image):
@@ -52,28 +53,32 @@ class TLGAN_Dataset(Dataset):
 
 
 class CRNN_Dataset(Dataset):
-    def __init__(self, path_to_csv = "./CRNN.csv", dict_dir="dict_file.txt", root = './images/CRNN', ):
+    def __init__(self, path_to_csv = "data/CRNN.csv", dict_dir="data/str2int.txt", root = 'data/images/CRNN', ):
         self.img_file=[]
-        self.label = []
         self.root = root
+        self.toTensor = transforms.ToTensor()
 
         with open(path_to_csv, "r",encoding = "utf-8") as f:
             for line in f.readlines():
                 self.img_file.append(line.strip().split(','))
 
         with open(dict_dir, "r",encoding = "utf-8") as fil:
-            dict = fil.read()
+            dict_ = fil.read()
 
-        self.label_dict = json.loads(dict)
+        self.label_dict = json.loads(dict_)
 
     def __len__(self):
         return len(self.img_file)
 
     def __getitem__(self, idx):
-        image = np.array(Image.open(os.path.join(self.root,self.img_file[idx][0]))).astype(np.int32)
-        image = torch.tensor(image/255,dtype=torch.float32)
+        image = Image.open(os.path.join(self.root,self.img_file[idx][0]))
+        #image = np.array(image).astype(np.int32)/255
+        image = self.toTensor(image)
+        #image=image.type(torch.cuda.FloatTensor)
 
+        label=[]
         for key in self.img_file[idx][1:]:
-            self.label.append(self.label_dict[key])
+            label.append(str(self.label_dict[key]))
 
-        return image, self.label
+        label=",".join(label)
+        return image, label

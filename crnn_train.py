@@ -35,7 +35,7 @@ def save_model(crnn_model, save_path, train_loader):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Convert text to image file")
     parser.add_argument("--load_model", type=str)
-    parser.add_argument("--save_model", type=str, default="crnn_model/crnn4.pth")
+    parser.add_argument("--save_model", type=str, default="crnn_model/example.pth")
     parser.add_argument("--batchSize", type=int, default=32)
     parser.add_argument("--n_iter", type=int, default=500)
     parser.add_argument('--cuda', type=bool, default=True)

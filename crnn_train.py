@@ -35,13 +35,12 @@ def save_model(crnn_model, save_path, train_loader):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Convert text to image file")
     parser.add_argument("--load_model", type=str)
-    parser.add_argument("--save_model", type=str, default="crnn_model/crnn2.pth")
+    parser.add_argument("--save_model", type=str, default="crnn_model/crnn4.pth")
     parser.add_argument("--batchSize", type=int, default=32)
     parser.add_argument("--n_iter", type=int, default=500)
     parser.add_argument('--cuda', type=bool, default=True)
     args = parser.parse_args()
 
-    print(args.load_model)
     print("Data Loading ...\n")
 
     train_dataset=CRNN_Dataset()
@@ -57,7 +56,6 @@ if __name__ == '__main__':
     optimizer=optim.Adam(crnn.parameters())
     loss_fn=nn.CTCLoss()
 
-    ## train start ! =========================================================================
     print("train start !!!\n==================================================================")
 
     train_losses=[]
@@ -91,28 +89,9 @@ if __name__ == '__main__':
 
         if epoch%25==0:
             save_model(crnn, args.save_model, train_loader)
-        if train_losses[-1]<0.01:
+        if train_losses[-1]<0.05:
             break
     
     save_model(crnn, args.save_model, train_loader)
     print("\n\n --- finish !! ---")
-
-
-
-    '''
-    print(preds.tolist()[64][0][:100])
-    score, kk = preds.max(2)
-    print(score.shape)
-    print(score)
-    print(kk.shape)
-    print(kk)
-    asdf = preds.transpose(1, 0).contiguous().tolist()
-    print(asdf)
-    '''
-
-
-
-
-
-
-
+    

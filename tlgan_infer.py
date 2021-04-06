@@ -5,15 +5,23 @@ import numpy as np
 import matplotlib.pyplot as plt
 from torch.utils.data import DataLoader
 import cv2
-
+from tqdm import tqdm
 
 def infer_model(img,weight_path = "./tlgan_model/generator.pt",img_col_size=60,img_row_size=256,left_margin=20):
     # img shape 256,256,3
     # image input for torch => channel first
+
+    #fig = plt.figure()
+    #ax1 = fig.add_subplot(1, 2, 1)
+    #ax2 = fig.add_subplot(1, 2, 2)
+    #ax1.imshow(img)
+    #ax1.set_title("original")
+
     x = np.transpose(img,(2,0,1))
     x = torch.unsqueeze(x,dim=0)
+    device = torch.device('cpu')
     netG = Generator()
-    netG.load_state_dict(torch.load(weight_path))
+    netG.load_state_dict(torch.load(weight_path, map_location=device))
 
     x = netG(x)
     x = x.detach().numpy()[0]
@@ -22,23 +30,27 @@ def infer_model(img,weight_path = "./tlgan_model/generator.pt",img_col_size=60,i
     # plt.imshow(x,cmap='gray')
     # plt.show()
 
-    axis = make_axis_cv(x)
+    #ax2.imshow(x)
+    #ax2.set_title("tlgan output")
+    #plt.subplots_adjust(wspace=0.3)
+    #plt.show()
+
+    axis = sorted(make_axis_cv(x), key=lambda x : x[0][1])
     result = []
     for (min,max) in axis:
-        tmp = img[min[1]:max[1],min[0]:max[0],0]
+        tmp = img[min[1] -2 :max[1] + 2,min[0]:max[0],:]
         # croppging
-        up_magin = (img_col_size - (max[1]-min[1]))//2
-        down_magin = img_col_size - (max[1] - min[1]) - up_magin
+        up_magin = (img_col_size - (max[1]-min[1]))//2 - 2
+        down_magin = img_col_size - (max[1] - min[1]) - up_magin - 2
         left_magin = left_margin
         right_margin = img_row_size-left_magin-(max[0]-min[0])
         # margin check
-        tmp = np.pad(tmp,((up_magin,down_magin),(left_magin,right_margin)),'constant', constant_values=0)
+        tmp = np.pad(tmp,((up_magin,down_magin),(left_magin,right_margin), (0, 0)),'constant', constant_values=0)
         result.append(tmp)
         # append pad img
 
         # plt.imshow(result[-1],cmap='gray')
         # plt.show()
-    print(result)
     return result
 
 
@@ -108,14 +120,34 @@ def make_axis_cv(img):
 
 
 ## test code
+def get_infer_image():
+    data = DataLoader(datasets.TLGAN_Dataset(path_to_csv="./data/TLGAN.csv", path_to_img="./data/images/TLGAN", path_to_GT="./data/images/gaussian_map"),
+    batch_size=1)
+    data = iter(data)
+    img = next(data)
+    img = next(data)[0]
+    img = img[0]
+    img= np.transpose(img,(1,2,0))
 
-data = DataLoader(datasets.TLGAN_Dataset(path_to_csv="./data/TLGAN.csv", path_to_img="./data/images/TLGAN", path_to_GT="./data/images/gaussian_map"),
-batch_size=1)
-data = iter(data)
-img = next(data)
-img = next(data)[0]
-img = img[0]
-img= np.transpose(img,(1,2,0))
-print(img.shape)
+    return infer_model(img)
 
-infer_model(img)
+def make_infer_image():
+    excluse_list=[]
+    excluse_count=0
+
+    data = DataLoader(datasets.TLGAN_Dataset(path_to_csv="./data/TLGAN.csv", path_to_img="./data/images/TLGAN", path_to_GT="./data/images/gaussian_map"),
+    batch_size=1)
+    img_num=0
+    for i, (xx, yy) in tqdm(enumerate(data), total=len(data)):
+        img = xx[0]
+        img= np.transpose(img,(1,2,0))
+        source_images=infer_model(img)
+        for num, image in enumerate(source_images):
+            image=image*255
+            if img_num in excluse_list:
+                excluse_count+=1
+                break
+            cv2.imwrite("data/images/CRNN/"+str(img_num-excluse_count)+".jpg", image)
+            img_num+=1
+
+#make_infer_image()

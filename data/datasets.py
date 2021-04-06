@@ -7,6 +7,7 @@ import json
 
 from torch.utils.data.dataset import Dataset
 import torchvision.transforms as transforms
+import matplotlib.pyplot as plt
 
 
 def channel_first(image):
@@ -66,13 +67,12 @@ class CRNN_Dataset(Dataset):
             dict_ = fil.read()
 
         self.label_dict = json.loads(dict_)
-
     def __len__(self):
         return len(self.img_file)
 
     def __getitem__(self, idx):
         image = Image.open(os.path.join(self.root,self.img_file[idx][0]))
-        #image = np.array(image).astype(np.int32)/255
+        image = np.array(image).astype(np.float32)/255
         image = self.toTensor(image)
         #image=image.type(torch.cuda.FloatTensor)
 

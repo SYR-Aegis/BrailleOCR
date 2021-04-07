@@ -7,15 +7,14 @@ import json
 
 from torch.utils.data.dataset import Dataset
 import torchvision.transforms as transforms
-import matplotlib.pyplot as plt
 
 
 def channel_first(image):
-    return np.moveaxis(image, 2, 0)
+    return np.transpose(image, (2, 0, 1))
 
 
 def channel_last(image):
-    return np.moveaxis(image, 0, 2)
+    return np.transpose(image, (1, 2, 0))
 
 
 class TLGAN_Dataset(Dataset):
@@ -32,7 +31,6 @@ class TLGAN_Dataset(Dataset):
                 img = channel_first(img)
 
                 GT = np.load(os.path.join(path_to_GT, line[0].split('.')[0]+".npy"))
-                GT = channel_first(GT)
 
                 imgs.append(img)
                 GTs.append(GT)
@@ -54,31 +52,31 @@ class TLGAN_Dataset(Dataset):
 
 
 class CRNN_Dataset(Dataset):
-    def __init__(self, path_to_csv = "data/CRNN.csv", dict_dir="data/str2int.txt", root = 'data/images/CRNN', ):
-        self.img_file=[]
+    def __init__(self, path_to_csv="data/CRNN.csv", dict_dir="data/str2int.txt", root='data/images/CRNN', ):
+        self.img_file = []
         self.root = root
         self.toTensor = transforms.ToTensor()
 
-        with open(path_to_csv, "r",encoding = "utf-8") as f:
+        with open(path_to_csv, "r", encoding="utf-8") as f:
             for line in f.readlines():
                 self.img_file.append(line.strip().split(','))
 
-        with open(dict_dir, "r",encoding = "utf-8") as fil:
+        with open(dict_dir, "r", encoding="utf-8") as fil:
             dict_ = fil.read()
 
         self.label_dict = json.loads(dict_)
+
     def __len__(self):
         return len(self.img_file)
 
     def __getitem__(self, idx):
-        image = Image.open(os.path.join(self.root,self.img_file[idx][0]))
+        image = Image.open(os.path.join(self.root, self.img_file[idx][0]))
         image = np.array(image).astype(np.float32)/255
         image = self.toTensor(image)
-        #image=image.type(torch.cuda.FloatTensor)
 
-        label=[]
+        label = []
         for key in self.img_file[idx][1:]:
             label.append(str(self.label_dict[key]))
 
-        label=",".join(label)
+        label = ",".join(label)
         return image, label

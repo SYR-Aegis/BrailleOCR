@@ -17,6 +17,11 @@ images 폴더 안에 TLGAN, CRNN에 사용될 이미지가 생성된다
 
 ### TLGAN에 사용되는 Gaussian cylindrical map 생성방법
 
-generate_gau_map.py를 실행  
+    python generate_gau_map.py
 
-*담당자 기술*
+### 사용되는 인자들
+|인자명|용도|기본값|
+|---|---|---|
+|--csv_file_path|TLGAN.csv까지의 경로|./|
+|--csv_file_name|TLGAN에 사용할 csv파일 까지의 경로|TLGAN.csv|
+|--map_save_path|Gaussian cylindrical map의 저장 경로|./images/gaussian_map/|

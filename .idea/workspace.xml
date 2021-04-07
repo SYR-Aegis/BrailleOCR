@@ -20,9 +20,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a095a9f5-74c8-463b-9683-bd66ff141394" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/weights/discriminator.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crnn_infer.py" beforeDir="false" afterPath="$PROJECT_DIR$/inference.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crnn_model/model_for_CRNNdata.pth" beforeDir="false" afterPath="$PROJECT_DIR$/weights/crnn.pth" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crnn_model/model_for_TLGANdata.pth" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/crnn_tool.py" beforeDir="false" afterPath="$PROJECT_DIR$/crnn_tool.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crnn_train.py" beforeDir="false" afterPath="$PROJECT_DIR$/crnn_train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/data/Readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/crawler.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/crawler.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/datasets.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/datasets.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/generate_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/generate_dataset.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/generate_gau_map.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/generate_gau_map.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/tlgan/tlgan.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/tlgan/tlgan.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlgan_infer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlgan_model/discriminator.pt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlgan_model/generator.pt" beforeDir="false" afterPath="$PROJECT_DIR$/weights/generator.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlgan_train.py" beforeDir="false" afterPath="$PROJECT_DIR$/tlgan_train.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,30 +63,14 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\projects\BrailleOCR\weights" />
+    </key>
   </component>
   <component name="RunManager" selected="Python.generate_gau_map">
-    <configuration name="generate_dataset" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="BrailleOCR" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/data" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data/generate_dataset.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="generate_gau_map" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="BrailleOCR" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -84,6 +85,50 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data/generate_gau_map.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="inference (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="BrailleOCR" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/inference.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="inference" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="BrailleOCR" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="D:\projects\BrailleOCR\inference.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -114,11 +159,35 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="tlgan_train" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="BrailleOCR" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tlgan_train.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.generate_gau_map" />
+        <item itemvalue="Python.inference (1)" />
+        <item itemvalue="Python.tlgan_train" />
+        <item itemvalue="Python.inference" />
         <item itemvalue="Python.test" />
-        <item itemvalue="Python.generate_dataset" />
       </list>
     </recent_temporary>
   </component>
@@ -133,6 +202,8 @@
       <workItem from="1612616226353" duration="178000" />
       <workItem from="1612753438673" duration="1778000" />
       <workItem from="1612769434227" duration="2079000" />
+      <workItem from="1617772415813" duration="8992000" />
+      <workItem from="1617781627118" duration="1520000" />
     </task>
     <servers />
   </component>
@@ -152,26 +223,58 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="2151" height="333" key="GridCell.Tab.0.bottom" timestamp="1612771508156">
+    <state x="803" y="398" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1617779334402">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
+    <state x="803" y="398" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2194.1194/3840.-557.1440.2520@0.0.2194.1194" timestamp="1617779334402" />
+    <state width="2151" height="409" key="GridCell.Tab.0.bottom" timestamp="1617781477747">
+      <screen x="0" y="0" width="2194" height="1194" />
+    </state>
+    <state width="2151" height="409" key="GridCell.Tab.0.bottom/0.0.2194.1194/3840.-557.1440.2520@0.0.2194.1194" timestamp="1617781477747" />
     <state width="2151" height="333" key="GridCell.Tab.0.bottom/0.0.2194.1194@0.0.2194.1194" timestamp="1612771508156" />
-    <state width="2151" height="333" key="GridCell.Tab.0.center" timestamp="1612771508156">
+    <state width="2151" height="409" key="GridCell.Tab.0.center" timestamp="1617781477746">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
+    <state width="2151" height="409" key="GridCell.Tab.0.center/0.0.2194.1194/3840.-557.1440.2520@0.0.2194.1194" timestamp="1617781477746" />
     <state width="2151" height="333" key="GridCell.Tab.0.center/0.0.2194.1194@0.0.2194.1194" timestamp="1612771508156" />
-    <state width="2151" height="333" key="GridCell.Tab.0.left" timestamp="1612771508156">
+    <state width="2151" height="409" key="GridCell.Tab.0.left" timestamp="1617781477746">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
+    <state width="2151" height="409" key="GridCell.Tab.0.left/0.0.2194.1194/3840.-557.1440.2520@0.0.2194.1194" timestamp="1617781477746" />
     <state width="2151" height="333" key="GridCell.Tab.0.left/0.0.2194.1194@0.0.2194.1194" timestamp="1612771508156" />
-    <state width="2151" height="333" key="GridCell.Tab.0.right" timestamp="1612771508156">
+    <state width="2151" height="409" key="GridCell.Tab.0.right" timestamp="1617781477747">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
+    <state width="2151" height="409" key="GridCell.Tab.0.right/0.0.2194.1194/3840.-557.1440.2520@0.0.2194.1194" timestamp="1617781477747" />
     <state width="2151" height="333" key="GridCell.Tab.0.right/0.0.2194.1194@0.0.2194.1194" timestamp="1612771508156" />
+    <state width="2151" height="409" key="GridCell.Tab.1.bottom" timestamp="1617781477747">
+      <screen x="0" y="0" width="2194" height="1194" />
+    </state>
+    <state width="2151" height="409" key="GridCell.Tab.1.bottom/0.0.2194.1194/3840.-557.1440.2520@0.0.2194.1194" timestamp="1617781477747" />
+    <state width="2151" height="409" key="GridCell.Tab.1.center" timestamp="1617781477747">
+      <screen x="0" y="0" width="2194" height="1194" />
+    </state>
+    <state width="2151" height="409" key="GridCell.Tab.1.center/0.0.2194.1194/3840.-557.1440.2520@0.0.2194.1194" timestamp="1617781477747" />
+    <state width="2151" height="409" key="GridCell.Tab.1.left" timestamp="1617781477747">
+      <screen x="0" y="0" width="2194" height="1194" />
+    </state>
+    <state width="2151" height="409" key="GridCell.Tab.1.left/0.0.2194.1194/3840.-557.1440.2520@0.0.2194.1194" timestamp="1617781477747" />
+    <state width="2151" height="409" key="GridCell.Tab.1.right" timestamp="1617781477747">
+      <screen x="0" y="0" width="2194" height="1194" />
+    </state>
+    <state width="2151" height="409" key="GridCell.Tab.1.right/0.0.2194.1194/3840.-557.1440.2520@0.0.2194.1194" timestamp="1617781477747" />
     <state x="607" y="355" width="923" height="478" key="MultipleFileMergeDialog" timestamp="1612616367975">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
     <state x="607" y="355" width="923" height="478" key="MultipleFileMergeDialog/0.0.2194.1194@0.0.2194.1194" timestamp="1612616367975" />
+    <state x="3980" y="-584" width="1953" height="1180" maximized="true" key="dock-window-1" timestamp="1617777148648">
+      <screen x="3840" y="-557" width="1440" height="2520" />
+    </state>
+    <state x="3980" y="-584" width="1953" height="1180" maximized="true" key="dock-window-1/0.0.2194.1194/3840.-557.1440.2520@0.0.2194.1194" timestamp="1617777148648" />
+    <state x="4044" y="-580" width="1244" height="819" maximized="true" key="dock-window-2" timestamp="1617780414107">
+      <screen x="3840" y="-557" width="1440" height="2520" />
+    </state>
+    <state x="4044" y="-580" width="1244" height="819" maximized="true" key="dock-window-2/0.0.2194.1194/3840.-557.1440.2520@0.0.2194.1194" timestamp="1617780414107" />
     <state x="871" y="309" key="git4idea.branch.GitSmartOperationDialog" timestamp="1612616296144">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
@@ -180,14 +283,21 @@
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
     <state x="965" y="509" key="git4idea.rebase.GitUnstructuredEditor/0.0.2194.1194@0.0.2194.1194" timestamp="1612616370437" />
+    <state x="940" y="381" key="refactoring.ChangeSignatureDialog" timestamp="1617777964693">
+      <screen x="0" y="0" width="2194" height="1194" />
+    </state>
+    <state x="940" y="381" key="refactoring.ChangeSignatureDialog/0.0.2194.1194/3840.-557.1440.2520@0.0.2194.1194" timestamp="1617777964693" />
     <state x="760" y="264" width="672" height="678" key="search.everywhere.popup" timestamp="1612753711064">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
     <state x="760" y="264" width="672" height="678" key="search.everywhere.popup/0.0.2194.1194@0.0.2194.1194" timestamp="1612753711064" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/BrailleOCR$test.coverage" NAME="test Coverage Results" MODIFIED="1612770375280" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data" />
+    <SUITE FILE_PATH="coverage/BrailleOCR$test.coverage" NAME="test Coverage Results" MODIFIED="1617773707274" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data" />
     <SUITE FILE_PATH="coverage/BrailleOCR$generate_dataset.coverage" NAME="generate_dataset Coverage Results" MODIFIED="1612769889512" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data" />
-    <SUITE FILE_PATH="coverage/BrailleOCR$generate_gau_map.coverage" NAME="generate_gau_map Coverage Results" MODIFIED="1612771508149" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data" />
+    <SUITE FILE_PATH="coverage/BrailleOCR$crnn_infer.coverage" NAME="crnn_infer Coverage Results" MODIFIED="1617774319692" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/BrailleOCR$tlgan_train.coverage" NAME="tlgan_train Coverage Results" MODIFIED="1617776091977" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/BrailleOCR$inference__1_.coverage" NAME="inference (1) Coverage Results" MODIFIED="1617780103263" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/BrailleOCR$generate_gau_map.coverage" NAME="generate_gau_map Coverage Results" MODIFIED="1617783092751" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data" />
   </component>
 </project>

@@ -32,22 +32,20 @@ if __name__ == '__main__':
     parser.add_argument("--csv_file_path", type=str, default="./")
     parser.add_argument("--csv_file_name", type=str, default="TLGAN.csv")
     parser.add_argument("--map_save_path", type=str, default="./images/gaussian_map/")
-    parser.add_argument("--n_text", type=int, default=3)
 
     args = parser.parse_args()
-    n_text = args.n_text
 
     if os.path.exists(args.map_save_path):
         for file in glob.glob(args.map_save_path+"/*"):
             os.remove(file)
 
-    with open(os.path.join(args.csv_file_path, args.csv_file_name), 'r',encoding='utf-8') as csv_file:
+    with open(os.path.join(args.csv_file_path, args.csv_file_name), 'r', encoding='utf-8') as csv_file:
         reader = csv.reader(csv_file)
         for line in reader:
             name = line[0]
             # name split
             line = line[1:]
-            line = list(map(int,line))
+            line = list(map(int, line))
             # csv str to int
             line = [line[i:i+4] for i in range(0, len(line), 4)]
             # split 4 x_min,x_max,y_min,y_max 

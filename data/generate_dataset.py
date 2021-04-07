@@ -8,6 +8,7 @@ import sys
 from PIL import ImageFont, ImageDraw, Image
 from pathlib import Path
 
+
 # a function to draw training images
 def draw_image(textlist, TLGAN_save_path, CRNN_save_path):
 

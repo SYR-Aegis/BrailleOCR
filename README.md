@@ -69,8 +69,8 @@ https://arxiv.org/abs/1507.05717
 
 |    인자명    |           용도            |       기본값       |
 | :----------: | :-----------------------: | :----------------: |
-| --load_model |   crnn 모델파일의 경로    | ./weights/crnn.pth |
-| --save_model | crnn 모델 파일까지의 경로 | ./weights/crnn.pth |
+| --load_model |   crnn 모델파일의 경로    | ./weights/ |
+| --save_model | crnn 모델 파일까지의 경로 | ./weights/ |
 | --batchSize  |      학습 배치 크기       |         32         |
 |   --n_iter   |       전체 epoch 수       |        500         |
 

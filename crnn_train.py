@@ -1,15 +1,23 @@
 import argparse
+import itertools
+import os
+
+import torch
+
+from torch import nn, optim
+
 from crnn_tool import mapping_seq
 from models.crnn.crnn_model import CRNN
 from data.datasets import CRNN_Dataset
-import itertools
-import torch
-from torch import nn, optim
+
 from tqdm import tqdm
+from pathlib import Path
 
 
 def save_model(crnn_model, save_path, train_loader, device):
-    torch.save(crnn_model.state_dict(), save_path)
+    Path(save_path).mkdir(parents=True, exist_ok=True)
+
+    torch.save(crnn_model.state_dict(), os.path.join(save_path, "crnn.pth"))
     print("----------------------------\n\nsave model : ", save_path)
 
     acc=[]
@@ -35,8 +43,8 @@ def save_model(crnn_model, save_path, train_loader, device):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Convert text to image file")
-    parser.add_argument("--load_model", type=str, default="./weights/crnn.pth")
-    parser.add_argument("--save_model", type=str, default="./weights/crnn.pth")
+    parser.add_argument("--load_model", type=str, default="./weights/")
+    parser.add_argument("--save_model", type=str, default="./weights/")
     parser.add_argument("--batchSize", type=int, default=32)
     parser.add_argument("--n_iter", type=int, default=500)
 

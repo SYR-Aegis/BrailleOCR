@@ -4,6 +4,8 @@ import argparse
 import os
 import torch
 
+from pathlib import Path
+
 from torch import autograd
 from torch import optim
 
@@ -143,10 +145,13 @@ class tlgan:
             print(epoch, self.d_cost, self.g_cost)
 
     def save_model(self):
+        Path(self.save_path).mkdir(parents=True, exist_ok=True)
+
         torch.save(self.netG.state_dict(), self.save_path + "generator.pt")
         torch.save(self.netD.state_dict(), self.save_path + "discriminator.pt")
 
     def load_model(self):
+        Path(self.save_path).mkdir(parents=True, exist_ok=True)
         self.netG.load_state_dict(torch.load(self.save_path + "generator.pt"))
         self.netD.load_state_dict(torch.load(self.save_path + "discriminator.pt"))
 

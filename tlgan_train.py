@@ -113,8 +113,9 @@ class tlgan:
 
     def train(self, data, epochs, show_at_100_epochs=False):
 
-        data_iter = iter(data)
         for epoch in range(epochs):
+            data_iter = iter(data)
+
             for img, real in data_iter:
 
                 for p in self.netD.parameters():  # reset requires_grad

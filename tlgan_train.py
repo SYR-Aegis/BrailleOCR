@@ -115,32 +115,26 @@ class tlgan:
 
         data_iter = iter(data)
         for epoch in range(epochs):
-            try:
-                img, real = next(data_iter)
-                if img.shape[0] != self.batch_size:
-                    img, real = next(data_iter)
-            except StopIteration:
-                data_iter = iter(data)
-                img, real = next(data_iter)
+            for img, real in data_iter:
 
-            for p in self.netD.parameters():  # reset requires_grad
-                p.requires_grad = True
-            for p in self.netG.parameters():  # reset requires_grad
-                p.requires_grad = False
-            for _ in range(5):
+                for p in self.netD.parameters():  # reset requires_grad
+                    p.requires_grad = True
+                for p in self.netG.parameters():  # reset requires_grad
+                    p.requires_grad = False
+                for _ in range(5):
 
-                self.train_disc(img, real)
+                    self.train_disc(img, real)
 
-            for p in self.netD.parameters():  # reset requires_grad
-                p.requires_grad = False
-            for p in self.netG.parameters():  # reset requires_grad
-                p.requires_grad = True
+                for p in self.netD.parameters():  # reset requires_grad
+                    p.requires_grad = False
+                for p in self.netG.parameters():  # reset requires_grad
+                    p.requires_grad = True
 
-            if epoch%100 == 0 and show_at_100_epochs:
-                self.train_gen(img, real, True)
-                self.save_model()
-            else:
-                self.train_gen(img, real, False)
+                if epoch%100 == 0 and show_at_100_epochs:
+                    self.train_gen(img, real, True)
+                    self.save_model()
+                else:
+                    self.train_gen(img, real, False)
 
             print(epoch, self.d_cost, self.g_cost)
 

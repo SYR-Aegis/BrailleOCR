@@ -5,3 +5,4 @@ data/sample_text.txt
 weights/*
 __pycache__/*
 *.py[cod]
+.venv/

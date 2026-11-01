@@ -8,7 +8,7 @@ import argparse
 # a function to crawl page from url
 def crawl(url_list="./"):
 
-    with open(os.path.join(url_list, "url_list.txt"), 'w', encoding="utf-8") as f:
+    with open(os.path.join(url_list, "url_list.txt"), 'r', encoding="utf-8") as f:
         urls = f.read().split("\n")
 
         for url in urls:
